@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "452807546764",
+    "firebase_url": "https://inventorylist-bf2c0.firebaseio.com",
+    "project_id": "inventorylist-bf2c0",
+    "storage_bucket": "inventorylist-bf2c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452807546764:android:1458a722720e29a04068a9",
+        "android_client_info": {
+          "package_name": "com.redbravo.inventorylist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452807546764-aouv97vgbdmdjvhqs6j52gp0pvvqdh0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4I3Up3Go7DUB93YsxsIfbAGu-VvewDts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452807546764-aouv97vgbdmdjvhqs6j52gp0pvvqdh0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
