@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddProduct">
+    android:background="#16062e"
+    tools:context=".AddProduct"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Item"
+            android:textSize="18sp"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center_horizontal"
+            />
     <com.google.android.material.textfield.TextInputLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,10 +32,10 @@
 
         <EditText
             android:id="@+id/product_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Product Name"
-
+            android:textColor="@color/Buttontext1"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <ImageView
@@ -25,6 +44,7 @@
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:clickable="true"
+
         android:src="@drawable/app_pic"
         android:tag="Upload Image"
         />
@@ -35,10 +55,12 @@
 
         <EditText
             android:id="@+id/price"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Price"
+            android:textColor="@color/Buttontext1"
 
+            android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -48,10 +70,11 @@
 
         <EditText
             android:id="@+id/SKU"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="SKU"
-
+            android:textColor="@color/Buttontext1"
+            android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -61,17 +84,22 @@
 
         <EditText
             android:id="@+id/quantity"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Quantity"
-
+            android:textColor="@color/Buttontext1"
+            android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
 <Button
     android:id="@+id/additem"
-    android:layout_width="wrap_content"
+    android:layout_width="150dp"
     android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
     android:text="Add Item"
+    android:background="@drawable/buttonstyle1"
+    android:textColor="@color/Buttontext1"
+android:layout_gravity="center_horizontal"
     />
-
+    </LinearLayout>
 </LinearLayout>
