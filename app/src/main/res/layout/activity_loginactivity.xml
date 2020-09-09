@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#16062e"
+    android:orientation="vertical"
+    tools:context=".loginactivity">
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp">
+<EditText
+    android:id="@+id/uemail"
+    android:textColor="@color/inputtext"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/inputstyle"
+    android:hint="Email"
+    android:inputType="textEmailAddress"
+/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp">
+    <EditText
+        android:id="@+id/upass"
+        android:hint="Password"
+        android:textColor="@color/inputtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputstyle"
+        android:inputType="textPassword"
+
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:onClick="login"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonstyle1"
+        android:text="Sign In"
+        android:textColor="@color/Buttontext1"
+        />
+  <TextView
+      android:layout_marginTop="20dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Sign In With Google"
+      android:textColor="@color/Buttontext1"
+      />
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/common_google_signin_btn_icon_dark"
+            />
+    </LinearLayout>
+</LinearLayout>

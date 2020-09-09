@@ -33,9 +33,10 @@
         <EditText
             android:id="@+id/product_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:hint="Product Name"
-            android:textColor="@color/Buttontext1"
+            android:background="@drawable/inputstyle"
+            android:textColor="@color/inputtext"
             />
     </com.google.android.material.textfield.TextInputLayout>
     <ImageView
@@ -44,7 +45,6 @@
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:clickable="true"
-
         android:src="@drawable/app_pic"
         android:tag="Upload Image"
         />
@@ -56,9 +56,10 @@
         <EditText
             android:id="@+id/price"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:hint="Price"
-            android:textColor="@color/Buttontext1"
+            android:background="@drawable/inputstyle"
+            android:textColor="@color/inputtext"
 
             android:inputType="number"
             />
@@ -71,9 +72,10 @@
         <EditText
             android:id="@+id/SKU"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:hint="SKU"
-            android:textColor="@color/Buttontext1"
+            android:background="@drawable/inputstyle"
+            android:textColor="@color/inputtext"
             android:inputType="number"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,10 +87,11 @@
         <EditText
             android:id="@+id/quantity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:hint="Quantity"
-            android:textColor="@color/Buttontext1"
+            android:textColor="@color/inputtext"
             android:inputType="number"
+            android:background="@drawable/inputstyle"
             />
     </com.google.android.material.textfield.TextInputLayout>
 <Button
