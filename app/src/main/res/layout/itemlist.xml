@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:orientation="horizontal"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
     android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 <ImageView
     android:id="@+id/itemimg"
     android:layout_width="90dp"
@@ -22,6 +28,7 @@
             android:textSize="18sp"
             android:textColor="@color/Buttontext1"
             />
+
         <TextView
             android:id="@+id/itemprice"
             android:layout_width="wrap_content"
@@ -31,23 +38,46 @@
             android:layout_marginTop="3dp"
             android:textColor="#307804"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <TextView
             android:id="@+id/itemstock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="200 in stock"
+            android:text="200"
             android:textColor="@color/Buttontext1"
             android:textSize="16sp"
+            />
+        <TextView
+            android:layout_marginLeft="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In stock"/>
+       </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SKU:"
+            android:textSize="10sp"
             />
         <TextView
             android:id="@+id/itemsku"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SKU: 22001"
+            android:text="22001"
             android:textSize="10sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
             android:textColor="#000"
             />
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

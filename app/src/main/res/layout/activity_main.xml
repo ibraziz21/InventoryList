@@ -6,30 +6,17 @@
     android:layout_height="match_parent"
     android:background="#16062e"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Items In your Inventory Appear here"
-        android:textColor="@color/Buttontext1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@id/button"
-    android:text="Sell Items"
-        android:textColor="#220947"
-        android:background="@drawable/buttonstyle2"
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="150dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:onClick="sell"
-        />
+        app:layout_constraintBottom_toTopOf="@id/stock_up"/>
+
+
+
+
     <Button
         android:id="@+id/button"
         android:layout_width="175dp"
