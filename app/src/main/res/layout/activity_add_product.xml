@@ -39,15 +39,25 @@
             android:textColor="@color/inputtext"
             />
     </com.google.android.material.textfield.TextInputLayout>
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
         android:id="@+id/imageupload"
-        android:layout_width="wrap_content"
+        android:layout_width="95dp"
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:clickable="true"
         android:src="@drawable/app_pic"
         android:tag="Upload Image"
         />
+        <Button
+            android:id="@+id/uploadbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="upload"/>
+    </LinearLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
