@@ -21,11 +21,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add New Item"
+            android:text="New Item"
             android:textSize="18sp"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
+            android:background="#fff"
             />
     <com.google.android.material.textfield.TextInputLayout
     android:layout_width="match_parent"
@@ -115,7 +116,7 @@
     android:layout_marginTop="15dp"
     android:text="Add Item"
     android:background="@drawable/buttonstyle1"
-    android:textColor="@color/Buttontext1"
+    android:textColor="@color/inputtext"
 android:layout_gravity="center_horizontal"
     />
     </LinearLayout>

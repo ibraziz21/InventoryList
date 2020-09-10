@@ -2,7 +2,10 @@ package com.redbravo.inventorylist;
 
 import android.content.Context;
 import android.net.Uri;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ import java.util.List;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
 private Context mContext;
 private List<uploadClass> mUploads;
+private  onItemClickListener mlistener;
 
 public  ItemAdapter(Context context,List<uploadClass>uploads){
     mContext = context;
@@ -49,9 +53,10 @@ public  ItemAdapter(Context context,List<uploadClass>uploads){
         return mUploads.size();
     }
 
-    public class ItemViewHolder extends RecyclerView.ViewHolder {
+    public class ItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
         TextView itemname, itemprice, itemquant, itemsku;
         ImageView itemimage;
+
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
             itemname = itemView.findViewById(R.id.productnme);
@@ -60,7 +65,53 @@ public  ItemAdapter(Context context,List<uploadClass>uploads){
             itemsku = itemView.findViewById(R.id.itemsku);
             itemimage = itemView.findViewById(R.id.itemimg);
 
+            itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mlistener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    mlistener.onItemClick(position);
+                }
+            }
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.setHeaderTitle("Select Action");
+            MenuItem AdjustStock = menu.add(Menu.NONE, 1, 1, "Adjust Stock");
+            MenuItem DeleteItem = menu.add(Menu.NONE, 2, 2, "Delete Item");
+
+        AdjustStock.setOnMenuItemClickListener(this);
+        DeleteItem.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            if (mlistener != null) {
+                int position = getAdapterPosition();
+                if (position != RecyclerView.NO_POSITION) {
+                    switch (item.getItemId()){
+                        case 1:
+                            mlistener.onStockAdjust(position);
+                            return true;
+                        case 2:
+                            mlistener.onDeleteClick(position);
+                    }
+                }
+            }
+            return false;
         }
     }
-
+ public interface onItemClickListener {
+    void onItemClick(int position);
+    void onStockAdjust(int position);
+    void onDeleteClick(int position);
+ }
+ public void setOnItemClickListener(onItemClickListener listener){
+mlistener= listener;
+ }
 }

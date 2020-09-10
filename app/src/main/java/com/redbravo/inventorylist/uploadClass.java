@@ -1,4 +1,7 @@
 package com.redbravo.inventorylist;
+
+import com.google.firebase.database.Exclude;
+
 //constructors, getters and setters for uploading to firebase
 public class uploadClass {
     private String productname;
@@ -7,6 +10,9 @@ public class uploadClass {
     private String imageuri;
     private int price;
 
+
+
+    private String mkey;
     public uploadClass() {
     }
 
@@ -56,5 +62,14 @@ public class uploadClass {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Exclude
+    public String getMkey() {
+        return mkey;
+    }
+@Exclude
+    public void setMkey(String key) {
+        this.mkey = key;
     }
 }
