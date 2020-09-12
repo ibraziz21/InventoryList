@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#16062e"
+    android:background="#ffff"
     android:orientation="vertical"
     tools:context=".loginactivity">
 
@@ -19,6 +19,8 @@
         android:layout_marginTop="3dp">
 <EditText
     android:id="@+id/uemail"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
     android:textColor="@color/inputtext"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -34,6 +36,8 @@
     <EditText
         android:id="@+id/upass"
         android:hint="Password"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:textColor="@color/inputtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,12 +56,34 @@
         android:text="Sign In"
         android:textColor="@color/Buttontext1"
         />
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not yet Registered?"
+            android:textColor="@color/inputtext"
+            />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="register"
+            android:textStyle="bold"
+            android:text="Create an account"
+            android:textColor="#3278fa"
+            />
+        </LinearLayout>
   <TextView
       android:layout_marginTop="20dp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="Sign In With Google"
-      android:textColor="@color/Buttontext1"
+      android:textColor="@color/inputtext"
       />
         <ImageView
             android:layout_gravity="center_horizontal"

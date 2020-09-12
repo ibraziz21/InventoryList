@@ -14,6 +14,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
             if (mAuth.getCurrentUser() != null) {
                 Log.i("User In", "A user is Logged in");
               database=FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid());
-                database.addValueEventListener(new ValueEventListener() {
+                database.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         // This method is called once with the initial value and again
@@ -89,19 +92,20 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
             muploadClass = new ArrayList<>();
             itemAdapter = new ItemAdapter(getApplicationContext(), muploadClass);
-            mRecyclerView.setAdapter(itemAdapter);
-            itemAdapter.setOnItemClickListener(MainActivity.this);
+
+
             database.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                database.keepSynced(true);
+
+                    database.keepSynced(true);
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         uploadClass upload = dataSnapshot.getValue(uploadClass.class);
                         upload.setMkey(dataSnapshot.getKey());
                         muploadClass.add(upload);
                     }
-
-
+                    mRecyclerView.setAdapter(itemAdapter);
+                    itemAdapter.setOnItemClickListener(MainActivity.this);
                 }
 
                 @Override
@@ -149,8 +153,6 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
     @Override
     public void onStockAdjust(int position) {
         uploadClass selectedItem = muploadClass.get(position);
-
-        final String key = selectedItem.getMkey();
         Intent intent = new Intent(MainActivity.this, itemsale.class);
         intent.putExtra("Key",selectedItem.getMkey());
         startActivity(intent);
@@ -159,6 +161,7 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
 
     @Override
     public void onDeleteClick(int position) {
+        //get position of the recyclerview, find corresponding key and use it to delete a record.
     uploadClass selected = muploadClass.get(position);
     final String skey = selected.getMkey();
         StorageReference imgref = mStorage.getReferenceFromUrl(selected.getImageuri());
@@ -170,5 +173,26 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
 
             }
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                mAuth.signOut();
+                Intent intent = new Intent(getApplicationContext(),loginactivity.class);
+                startActivity(intent);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

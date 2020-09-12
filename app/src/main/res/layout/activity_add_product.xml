@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#16062e"
+    android:background="#ffff"
     tools:context=".AddProduct"
 
     >
@@ -54,7 +54,7 @@
         android:layout_height="75dp"
         android:layout_marginTop="5dp"
         android:clickable="true"
-            android:background="#b58df2"
+
         android:src="@drawable/app_pic"
         android:tag="Upload Image"
         />

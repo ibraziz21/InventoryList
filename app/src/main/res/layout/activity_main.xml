@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#16062e"
+    android:background="#ffff"
     tools:context=".MainActivity">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -27,7 +27,7 @@
         android:gravity="center"
         android:onClick="newProduct"
         android:text="New Item"
-        android:textColor="@color/inputtext"
+        android:textColor="@color/Buttontext1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />

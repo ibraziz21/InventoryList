@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/imageview2"
             android:src="@drawable/app_pic"
@@ -30,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:text="Product Name"
                     android:textSize="18sp"
-                    android:textColor="@color/Buttontext1"
+                    android:textColor="@color/inputtext"
                     />
 
                 <TextView
@@ -51,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="200"
-                        android:textColor="@color/Buttontext1"
+                        android:textColor="@color/inputtext"
                         android:textSize="16sp"
                         />
                     <TextView
@@ -60,8 +61,13 @@
                         android:layout_height="wrap_content"
                         android:text="In stock"/>
                 </LinearLayout>
+
+
+
         </LinearLayout>
+
     </LinearLayout>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -81,9 +87,11 @@
 
         <EditText
             android:id="@+id/sellit"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:hint="Number of Items"
+            android:hint="  Number of Items"
             android:background="@drawable/inputstyle"
             android:textColor="@color/inputtext"
 
@@ -105,7 +113,7 @@
         android:text="Sell ITEMs"
         android:onClick="sellItems"
         android:background="@drawable/buttonstyle1"
-        android:textColor="@color/inputtext"
+        android:textColor="@color/Buttontext1"
         android:layout_gravity="center_horizontal"
         />
 </LinearLayout>
@@ -129,9 +137,11 @@
 
             <EditText
                 android:id="@+id/stockInc"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:hint="Number of Items"
+                android:hint="  Number of Items"
                 android:background="@drawable/inputstyle"
                 android:textColor="@color/inputtext"
 
@@ -152,7 +162,7 @@
             android:layout_marginTop="15dp"
             android:text="Stock Up"
             android:background="@drawable/buttonstyle1"
-            android:textColor="@color/inputtext"
+            android:textColor="@color/Buttontext1"
             android:layout_gravity="center_horizontal"
             android:onClick="addstock"
             />

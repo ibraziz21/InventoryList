@@ -55,4 +55,8 @@ EditText Uemail, Upass;
                     }
                 });
     }
+
+    public void register(View view) {
+
+    }
 }
