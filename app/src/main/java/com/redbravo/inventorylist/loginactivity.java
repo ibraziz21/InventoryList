@@ -32,7 +32,8 @@ EditText Uemail, Upass;
     public void login(View view) {
         String email = Uemail.getText().toString();
         String password = Upass.getText().toString();
-        mAuth.createUserWithEmailAndPassword(email, password)
+
+        mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -41,6 +42,7 @@ EditText Uemail, Upass;
                             Log.d("Success", "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(loginactivity.this, MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("Failed Sign Up", "createUserWithEmail:failure", task.getException());

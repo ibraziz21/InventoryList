@@ -75,6 +75,7 @@ public  ItemAdapter(Context context,List<uploadClass>uploads){
                 int position = getAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     mlistener.onItemClick(position);
+
                 }
             }
         }
