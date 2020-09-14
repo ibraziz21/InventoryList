@@ -83,10 +83,9 @@ public  ItemAdapter(Context context,List<uploadClass>uploads){
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             menu.setHeaderTitle("Select Action");
-            MenuItem AdjustStock = menu.add(Menu.NONE, 1, 1, "Adjust Stock");
             MenuItem DeleteItem = menu.add(Menu.NONE, 2, 2, "Delete Item");
 
-        AdjustStock.setOnMenuItemClickListener(this);
+
         DeleteItem.setOnMenuItemClickListener(this);
         }
 
@@ -97,10 +96,8 @@ public  ItemAdapter(Context context,List<uploadClass>uploads){
                 if (position != RecyclerView.NO_POSITION) {
                     switch (item.getItemId()){
                         case 1:
-                            mlistener.onStockAdjust(position);
-                            return true;
-                        case 2:
                             mlistener.onDeleteClick(position);
+                    return true;
                     }
                 }
             }
@@ -109,7 +106,7 @@ public  ItemAdapter(Context context,List<uploadClass>uploads){
     }
  public interface onItemClickListener {
     void onItemClick(int position);
-    void onStockAdjust(int position);
+
     void onDeleteClick(int position);
  }
  public void setOnItemClickListener(onItemClickListener listener){

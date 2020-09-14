@@ -21,8 +21,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class itemsale extends AppCompatActivity {
-DatabaseReference db;
+DatabaseReference db, selldb;
 FirebaseAuth mAuth;
     TextView itemname, itemprice, itemquant, itemsku;
     ImageView itemimage;
@@ -42,8 +47,8 @@ FirebaseAuth mAuth;
        final String newKey = getIntent().getStringExtra("Key");
            Log.i("NewKey","key is" +newKey);
 
-        db = FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child(newKey);
-
+        db = FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child("items").child(newKey);
+selldb = FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child("Sales");
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -75,7 +80,13 @@ FirebaseAuth mAuth;
     }
 
     public void sellItems(View view) {
+
+        final String Name = itemname.getText().toString();
+        final int Price  = Integer.parseInt(itemprice.getText().toString());
+
             final int newStock = Integer.parseInt(sell.getText().toString());
+        final int total = Price*newStock;
+
             db.addListenerForSingleValueEvent(new ValueEventListener() {
 
 
@@ -92,11 +103,14 @@ FirebaseAuth mAuth;
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(getApplicationContext(), "Successfull. New Stock is: "+sold, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+                            String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                            Sales sales = new Sales(Name,Price,date,newStock,total);
+                            String key = selldb.push().getKey();
+                            selldb.child(key).setValue(sales);
                         }
                     });
-
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
                 }
 
                 @Override
@@ -127,6 +141,7 @@ FirebaseAuth mAuth;
                         startActivity(intent);
                     }
                 });
+
 
             }
 

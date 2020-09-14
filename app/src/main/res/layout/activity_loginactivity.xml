@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:background="#ffff"
     android:orientation="vertical"
-    tools:context=".loginactivity">
+    tools:context=".loginactivity"
+
+    >
 
     <LinearLayout
         android:layout_marginTop="100dp"
@@ -76,7 +78,7 @@
             android:textStyle="bold"
             android:text="Create an account"
             android:textColor="#3278fa"
-            />
+            android:focusable="true" />
         </LinearLayout>
   <TextView
       android:layout_marginTop="20dp"

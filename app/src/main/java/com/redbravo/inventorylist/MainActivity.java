@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements ItemAdapter.onItemClickListener {
     FirebaseAuth mAuth;
     TextView text;
+    ProgressBar progressBar;
     private FirebaseStorage mStorage;
     DatabaseReference database;
     RecyclerView mRecyclerView;
@@ -59,13 +61,15 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressBar = findViewById(R.id.loading);
         mAuth = FirebaseAuth.getInstance();
         mStorage=FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance().getReference();
         if(internet_connection()==true) {
             if (mAuth.getCurrentUser() != null) {
                 Log.i("User In", "A user is Logged in");
-              database=FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid());
+              database=FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child("items");
                 database.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
             database.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                muploadClass.clear();
                     database.keepSynced(true);
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         uploadClass upload = dataSnapshot.getValue(uploadClass.class);
@@ -106,11 +110,13 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
                     }
                     mRecyclerView.setAdapter(itemAdapter);
                     itemAdapter.setOnItemClickListener(MainActivity.this);
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT);
+                    progressBar.setVisibility(View.INVISIBLE);
                 }
             });
 
@@ -146,18 +152,14 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
 
     @Override
     public void onItemClick(int position) {
-
-
-    }
-
-    @Override
-    public void onStockAdjust(int position) {
         uploadClass selectedItem = muploadClass.get(position);
         Intent intent = new Intent(MainActivity.this, itemsale.class);
         intent.putExtra("Key",selectedItem.getMkey());
         startActivity(intent);
 
     }
+
+
 
     @Override
     public void onDeleteClick(int position) {
@@ -186,6 +188,12 @@ public class MainActivity extends AppCompatActivity implements ItemAdapter.onIte
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
+
+            case R.id.sales_history:
+                Intent i  = new Intent(getApplicationContext(),SalesHistory.class);
+                startActivity(i);
+
+                return true;
             case R.id.logout:
                 mAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(),loginactivity.class);

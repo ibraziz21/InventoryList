@@ -43,9 +43,11 @@ Button add, upload;
 Bitmap bitmap;
     FirebaseAuth mAuth;
    StorageReference mRef;
-    DatabaseReference database;
+    DatabaseReference database, db;
  private Uri selectedImage;
-
+int sold = 0;
+String date="";
+int total = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +55,8 @@ Bitmap bitmap;
         //initialize storage and database (Firebase)
         mAuth= FirebaseAuth.getInstance();
         mRef = FirebaseStorage.getInstance().getReference(mAuth.getCurrentUser().getUid());
-        database = FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid());
-
+        database = FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child("items");
+    db=FirebaseDatabase.getInstance().getReference(mAuth.getCurrentUser().getUid()).child("Sales");
         //find the views with input
         pname= findViewById(R.id.product_name);
         pprice = findViewById(R.id.price);
@@ -178,6 +180,7 @@ imageRef.putFile(selectedImage)
                         uploadClass upload = new uploadClass(prname,sku,quantity,photouri ,price);
                         String uploadID = database.push().getKey();
                         database.child(uploadID).setValue(upload);
+
                     }
                 });
 

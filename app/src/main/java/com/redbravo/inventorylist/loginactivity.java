@@ -57,6 +57,8 @@ EditText Uemail, Upass;
     }
 
     public void register(View view) {
-
+        Intent i = new Intent(getApplicationContext(), UserReg.class);
+        startActivity(i);
+        finish();
     }
 }
